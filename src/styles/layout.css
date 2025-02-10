@@ -1,0 +1,340 @@
+
+body {
+    font-family: age0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+  
+  .land {
+    /* max-width: 1200px; */
+    width: 100%;
+    height: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: transparent;
+  }
+  .category-heading{
+    text-align: left;
+    font-weight: bolder;
+  }
+  
+  /* Top Navigation */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    position:relative;
+    padding: 0px 70px 0px 125px;
+    
+  }
+  
+  .Logo {
+    height: 40px;
+  }
+  .buttons1{
+    background-color: #1E99D7;
+    border: none;
+    padding: 2px;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  .title{
+    font-size: 120;
+    text-align: left;
+    font-weight:bolder;
+    color: #1E99D7  ;
+    padding: 40px 70px 10px 0px;
+  }
+  .content7{
+    font-size: 130%;
+    font-weight:100;
+    color:#031D5B ;
+    text-align: left;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  .logo1{
+    
+    background: none;
+    border: none;
+  }
+  .p1{
+    padding: 0;
+    justify-content: space-between;
+  }
+  .changelanguage {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .changelanguage button {
+    background: none;
+    border: none;
+    color: #031D5B;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .readmore-button{
+    font-size: 10px;
+  font-weight: bold;
+  color:black;
+  text-decoration: none;
+  float: right;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  padding: 2px;
+  }
+  
+  /* Main Content */
+  .maincontent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0px 0;
+    /* padding: 0 20px; */
+  }
+  
+  /* Left Content */
+  .card-left {
+    flex: 1;    
+    max-width: 100%;
+    margin-left: 10%;
+    align-items: flex-start;
+  }
+  
+  /* Right Image */
+  .card-right {
+    flex: 1;
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .card-right img {
+    
+    height: 600px;
+    border-radius: 8px;
+    margin-left: -20%;
+    width: 80%;
+  }
+  /* Search Bar */
+  .topsearch-bar1 form {
+    width: 100%;
+    padding: 10px;
+    
+  }
+  
+  .search-input1 {
+    width: 100%;
+    padding: 10px 24px;
+    font-size: 20px;
+    border: 1.5px solid #55C0E7;
+    border-radius: 5px;
+    background: #FFFFFF;
+    color: #B6BBC9;
+    font-weight: 700;
+    margin-top: 0px;
+  }
+  
+ 
+
+  
+  /* Category Cards */
+  .cardstosp {
+    padding-top: 20px;
+  }
+  
+  .card-container1 {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: transparent;
+    padding: 0px 0px 0px 0px;
+  }
+  .card-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: transparent;
+    
+  }
+  .card1 {
+    width: 340px;
+    overflow: hidden;
+    border: none;
+    height: 520px;
+    background-color: transparent;
+    transition: transform 0.3s ease-in-out;
+    padding: 0px 0px 0px 0px;
+  }
+  
+  .card1:hover {
+    transform: scale(1.05);
+  }
+  
+  .card1 img {
+    width: 100%;
+    object-fit: cover;
+    background-color: transparent;
+  }
+  
+  .card-content {
+    padding: 15px;
+    text-align: left;
+    background-color: transparent;
+    border: none; /* Ensures no borders */
+    background: none; /* Removes any background if needed */
+    box-shadow: none;
+    color:#031D5B ;
+    font-size: large;
+  }
+  
+  .card1 h5 {
+    font-size: 20px;
+    color: #031D5B;
+    font-weight: 1000;
+    background-color: transparent;
+  }
+  
+  .card1 p {
+    font-size: 14px;
+    color: #031D5B;
+    background-color: transparent;
+    word-spacing:normal;
+    line-height: 2;
+    padding: 10px 0px 10px 0px;
+  }
+  
+  .card1 a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #1E99D7;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 30px;
+    margin-top: 10px;
+    width: 220px;
+    text-align: center;
+    
+  }
+  .button-container1{
+    align-items: flex-start;
+    margin-left: -70%;
+    display: inline-flex;
+    gap: 15px;
+    padding-bottom: 60px;
+
+  }
+  .auth-button1 {
+    background-color: #1E99D7;
+    border: none;
+    padding: 15px 15px  15px 15px;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+      
+}
+.auth-button2{
+  background-color: #031D5B;
+    border: none;
+    padding: 15px 15px  15px 15px;
+    color: #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    
+}
+/* styles.css */
+.badge-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 35px 0px 30px 0px;
+  color: #031D5B;
+  
+  
+}
+
+.badge-link {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color:#031D5B;
+  font-size: 13px;
+}
+
+.badge-icon {
+  background-color: #29a9e1;
+  color: white;
+  padding: 4px;
+  font-size: 14px;
+  margin-right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .maincontent {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .card-left {
+      z-index: 2;
+    }
+  
+    .card-right {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .top-nav {
+      flex-direction: row;
+    }
+    .badge-container {
+      gap: 10px;
+      flex-direction: column;
+     
+    }
+  
+    .changelanguage {
+      justify-content: center;
+    }
+  
+    .search-input {
+      width: 100%;
+    }
+  
+    .buttons {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      width: 100%;
+    }
+  
+    .card-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

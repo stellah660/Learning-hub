@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ddea25b.chunk.css",
+    "main.js": "/static/js/main.3d96d91f.chunk.js",
+    "main.js.map": "/static/js/main.3d96d91f.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.66990ebe.js",
+    "runtime~main.js.map": "/static/js/runtime~main.66990ebe.js.map",
+    "static/js/2.509709f8.chunk.js": "/static/js/2.509709f8.chunk.js",
+    "static/js/2.509709f8.chunk.js.map": "/static/js/2.509709f8.chunk.js.map",
+    "static/js/3.2ebb6cf0.chunk.js": "/static/js/3.2ebb6cf0.chunk.js",
+    "static/js/3.2ebb6cf0.chunk.js.map": "/static/js/3.2ebb6cf0.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.fe14271ed6b8299179cba6d7e385ede3.js": "/precache-manifest.fe14271ed6b8299179cba6d7e385ede3.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.9ddea25b.chunk.css.map": "/static/css/main.9ddea25b.chunk.css.map",
+    "static/media/main.css": "/static/media/landing-page.fde96dcb.jpg",
+    "static/media/logo.png": "/static/media/logo.9a818249.png",
+    "static/media/mawingu.svg": "/static/media/mawingu.0530b2cf.svg",
+    "static/media/microphone.svg": "/static/media/microphone.1ef5d00e.svg",
+    "static/media/microphoneoff.svg": "/static/media/microphoneoff.dc65abdd.svg",
+    "static/media/tts.png": "/static/media/tts.79fcc3a6.png"
+  }
+}
