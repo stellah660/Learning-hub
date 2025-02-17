@@ -652,6 +652,7 @@
 
 .p {
   margin-top: 10px;
+  /* min-width: 50vw; */
 }
 
 /* Responsive adjustments for smaller screens */

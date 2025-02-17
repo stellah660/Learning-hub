@@ -8,30 +8,52 @@ import axios from 'axios';
 function Searchpage(props) {
   const location = useLocation();
   const searchResults = location.state?.generatedText || "No results found.";
+  const searchResults2 = location.state?.resData || "No results found.";
+  const [searchResults3, setSearchResults3] = useState("");
+    const [searchResults1, setSearchResults1] = useState("");
   const maxLength = 300;
   const [expanded, setExpanded] = useState(false);
+  const [expanded2, setExpanded2] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-    const [results, setResults] = useState('');
-    const navigate = useNavigate();
-  
+  const [results, setResults] = useState('');    
+  const navigate = useNavigate();
+  const { ans } = props;  // Destructure quiz and ans from props
+  const { resultData, generatedText } = ans || {}; 
 
-  // const doSearch = async (ev) => {
-  //   ev.preventDefault();
-  //   try {
-  //     const response = await axios.post(
-  //       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyD0AMHWeaGh1eHM1gUDonN_ll_imCUfWZ0',
-  //       {
-  //         contents: [{ parts: [{ text: searchTerm }] }]
-  //       },
-  //       { headers: { 'Content-Type': 'application/json' } }
-  //     );
-  
-  //     const generatedText = response.data.candidates[0]?.content?.parts[0]?.text || "No results found.";
-  //     navigate('/community', { state: { generatedText} }); 
-  //   } catch (error) {
-  //     console.error('Error fetching results:', error);
-  //   }
-  // };
+
+
+    
+const doSearch = async (ev) => {
+  ev.preventDefault();
+  try {
+    
+    const [response1, response2] = await Promise.all([
+      axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyD0AMHWeaGh1eHM1gUDonN_ll_imCUfWZ0', {
+        contents: [{ parts: [{ text: searchTerm }] }]
+      }, { headers: { 'Content-Type': 'application/json' } }),
+      
+      axios.post('https://learninghub.mawingu.co/api/searchdata', {
+        searchwords: searchTerm
+      }, { headers: { 'Content-Type': 'application/json' } })
+    ]);
+
+    const generatedText = response1.data.candidates[0]?.content?.parts[0]?.text || "No results found.";
+    setSearchResults1(generatedText); 
+
+    const responseData2 =response2.data;
+    setSearchResults3(responseData2); 
+   
+    navigate('/community', { 
+      state: { 
+        generatedText: generatedText, 
+        resData: { resData: responseData2, quiz: searchTerm }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching results:', error);
+  }
+};
+
   
   const trimmedText = searchResults.length > maxLength
     ? searchResults.substring(0, maxLength) + "..."
@@ -44,6 +66,8 @@ function Searchpage(props) {
         .replace(/\n/g, '<br />') // Replace single newlines with <br> for line breaks
         .replace(/^|$/, '<p>$&</p>'); // Ensure entire text is wrapped in <p>
     };
+    console.log(searchResults2);
+    console.log(searchResults);
     
 
     return (
@@ -55,25 +79,39 @@ function Searchpage(props) {
           <div className="icon-label">
               <small>Recommended</small>
           </div>
+          
+                {Array.isArray(resultData) && resultData.length > 0 ? (
+            resultData.map((item, index) => (
+              <div key={index}>
+                <div className="text-wrapper-10">{item.subtopic_name}</div>
+                <p className="p">{item.content}</p>
+              </div>
+            ))
+          ) : (
+            <p>No matches found.</p>
+          )}
           <hr style={{ marginRight: '20px' }} />
+          <div className="icon-label">
+              <small>Verified</small>
+              </div>
+            
+             {searchResults === "No results found." ? (
+              <p className="p">{searchResults}</p>
+            ) : (
+              <>
+                <p dangerouslySetInnerHTML={{
+                  __html: expanded2 ? formatText(searchResults) : formatText(searchResults.substring(0, maxLength) + (searchResults.length > maxLength ? "..." : ""))
+                }}></p>
+
+                {searchResults.length > maxLength && (
+                  <button onClick={() => setExpanded2(!expanded2)} className="btn btn-link">
+                    {expanded2 ? "Show Less" : "Read More"}
+                  </button>
+                )}
+              </>
+            )}
          
           <div className="content-box">
-          
-            {/* <h5>Causes of Cholera</h5> */}
-
-            <p dangerouslySetInnerHTML={{
-          __html: expanded ? formatText(searchResults) : formatText(trimmedText)
-        }}></p>
-            {searchResults.length > maxLength && (
-              <button 
-                onClick={() => setExpanded(!expanded)} 
-                className="btn btn-link"
-              >
-                {expanded ? "Show Less" : "Read More"}
-              </button>
-            )}
-        
-          
             <div className="icon-label">
               <img alt="Verified" src={copilot} />
               <small>Copilot</small>
@@ -81,64 +119,23 @@ function Searchpage(props) {
           </div>
           <hr style={{ marginRight: '20px' }} />
           <div className="content-box">
-          <>
-
-            {Array.isArray(props.ans) && props.ans.length > 0 ? (
-                <>
-                <div className="blog">
-                    <div className="overlap-2">
-                    <div className="text-wrapper-8">·</div>
-                    <div className="frame-8">
-                        <div className="text-wrapper-9">Verified Answer</div>
-                    </div>
-                    </div>
-                    {props.ans.map((item, index) => (
-                    <>
-                        <div className="text-wrapper-10">{item.subtopic_name}</div>
-                        <p className="p">
-                        {item.content}
-                        </p>
-                    </>
-                    ))}
-                    
-                </div>
-                <hr style={{ marginRight: '20px' }} />
-                <div className="search-box">
-                {/* <form onSubmit={doSearch}>
-                    <span className="search-icon">
-                    <i className="bi bi-search"></i>
-                    </span>
-                    <input 
-                    type="text" 
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="form-control" placeholder="Search" />
-                </form> */}
-                <form >
-          <input
-            type="text"
-            placeholder="Search... 🔍"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="search-input"
-          />
-        </form>
-                </div>
-                </>
-            ) : (
-                <>
-                <p>No result found.</p>
-                <hr style={{ marginRight: '20px' }} />
-                <div className="search-box">
-                    <span className="search-icon">
-                    <i className="bi bi-search"></i>
-                    </span>
-                    <input type="text" className="form-control" placeholder="Search" />
-                </div>
-                </>
-            )}
-            </>
           </div>
+
+    
+                <div className="search-box">
+                  <form onSubmit={doSearch}>
+                    <input
+                      type="text"
+                      placeholder="Search... "
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="form-control"
+                      onKeyDown={(e) => e.key === "Enter" && doSearch(e)}
+                    />
+                  </form>
+                </div>
+        
+               
 
         </div>
 

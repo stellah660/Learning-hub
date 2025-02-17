@@ -230,6 +230,7 @@ color: #3498db;
 font-weight: bold;
 font-size: 24px;
 text-transform: capitalize;
+width: 100%;
 }
 
 .content-box {
@@ -335,9 +336,9 @@ align-items: center;
 justify-content: center;
 }
 
-.chat-with-community{
+/* .chat-with-community{
 display: flex;
-}
+} */
 .cards {
 display: flex;
 flex-wrap: wrap;
@@ -471,6 +472,7 @@ font-weight: bold;
 padding: 10px;
 
 }
+
 
 .read-more {
 font-size: 10px;

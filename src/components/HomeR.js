@@ -4,6 +4,7 @@ import "../styles/layout.css";
 import icon from "../assets/LogoMawinguf.png";
 import Footer from "./Layout/Footer";
 import { useNavigate } from "react-router-dom";
+import chat from '../assets/image.png'
 import axios from "axios";
 import mcimg from "../assets/right.png";
 import check from "../assets/Check-3.png";
@@ -16,6 +17,16 @@ import legal from "../assets/Legal.png";
 import tick from "../assets/tick.png";
 
 function HomeR() {
+  const [showSearchModal, setShowSearchModal] = useState(false);
+  const openSearchModal = () => setShowSearchModal(true);
+  const closeSearchModal = () => setShowSearchModal(false);
+  const [searchTerm2, setSearchTerm2] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState("");
+  const [searchResults2, setSearchResults2] = useState("");
+  const [searchResults1, setSearchResults1] = useState("");
+  const navigate = useNavigate();
+
   const topCards = [
     
     { title: "Education", text: "Discover a wealth of resources designed to expand your knowledge and sharpen your skills. Whether you're learning a new subject or deepening your expertise, find the right tools", image: educate },
@@ -27,12 +38,76 @@ function HomeR() {
   const bottomCards = [
     { title: "Culture", text: "Immerse yourself in the richness of diverse traditions, arts, and customs from around the world. Gain a deeper appreciation for cultural heritage and its impact on society.", image: culture },
     { title: "Financial", text: "Take control of your financial future with expert guidance on budgeting, saving, and investing. Learn practical strategies to achieve stability and grow your wealth.", image: financial },
-    { title: "Legal", text: "Empower yourself with knowledge about your rights and legal protections. Access resources that help you navigate legal matters with confidence and clarity.", image: legal },
+    { title: "Legal", text: "Empower yourself with knowledge about your fundamental rights and legal protections. Access resources that help you navigate legal matters with confidence and clarity.", image: legal },
   ];
-  const [searchTerm, setSearchTerm] = useState("");
+
+
+const doSearch = async (ev) => {
+  ev.preventDefault();
+  try {
+    
+    const [response1, response2] = await Promise.all([
+      axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyD0AMHWeaGh1eHM1gUDonN_ll_imCUfWZ0', {
+        contents: [{ parts: [{ text: searchTerm }] }]
+      }, { headers: { 'Content-Type': 'application/json' } }),
+      
+      axios.post('https://learninghub.mawingu.co/api/searchdata', {
+        searchwords: searchTerm
+      }, { headers: { 'Content-Type': 'application/json' } })
+    ]);
+
+    const generatedText = response1.data.candidates[0]?.content?.parts[0]?.text || "No results found.";
+    setSearchResults1(generatedText); 
+
+    const responseData2 =response2.data;
+    setSearchResults2(responseData2); 
+   
+    navigate('/community', { 
+      state: { 
+        generatedText: generatedText, 
+        resData: { resData: responseData2, quiz: searchTerm }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching results:', error);
+  }
+};
+
+
+const doSearch1 = async (ev) => {
+  ev.preventDefault();
+  try {
+    
+    const [response1, response2] = await Promise.all([
+      axios.post('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyD0AMHWeaGh1eHM1gUDonN_ll_imCUfWZ0', {
+        contents: [{ parts: [{ text: searchTerm2 }] }]
+      }, { headers: { 'Content-Type': 'application/json' } }),
+      
+      axios.post('https://learninghub.mawingu.co/api/searchdata', {
+        searchwords: searchTerm2
+      }, { headers: { 'Content-Type': 'application/json' } })
+    ]);
+
+    const generatedText = response1.data.candidates[0]?.content?.parts[0]?.text || "No results found.";
+    setSearchResults1(generatedText); 
+
+    const responseData2 =response2.data;
+    setSearchResults2(responseData2); 
+   
+    navigate('/community', { 
+      state: { 
+        generatedText: generatedText, 
+        resData: { resData: responseData2, quiz: searchTerm }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching results:', error);
+  }
+};
 
 
   return (
+
     <div className="land">
       <div className="top-nav">
         <img className="Logo" alt="Logo" src={icon} />
@@ -45,18 +120,21 @@ function HomeR() {
                   Somali
                 </button>
           </div>
+
       </div>
+     
 
         <div className="maincontent">
           <div className="card-left">
           <div className="topsearch-bar1">
-          <form   >
-            <input
+          <form onSubmit={doSearch1}>
+              <input
               type="text"
               placeholder="Search the Web..."
-              value={searchTerm}
+              value={searchTerm2}
               className="search-input1"
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm2(e.target.value)}
+            //  onKeyDown={(e) => e.key === "Enter" && doSearch1(e)}
             />
           </form>
         
@@ -85,6 +163,26 @@ function HomeR() {
         </div>
 
       </div>
+      {showSearchModal && (
+        <div className="modal-overlay2">
+          <div className="modal-content">
+            <span className="close-button" onClick={() => setShowSearchModal(false)}>
+              &times;
+            </span>
+            <h2 className="content7">Search</h2>
+            <form onSubmit={doSearch}>
+            <input
+              type="text"
+              placeholder="Search ..."
+              value={searchTerm}
+              className="search-input2"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            </form>
+          </div>
+        </div>
+      )}
+
 
      
       <div className="card-container1">
@@ -94,12 +192,12 @@ function HomeR() {
             <div className="card-content">
               <h5>{card.title}</h5>
               <p>{card.text}</p>
-              <a href="#" >Read More</a>
+              <a href="#"   onClick={() => openSearchModal(card.title, card.text, card.image)}>Read More</a>
             </div>
           </div>
         ))}
       </div>
-
+      
       <div className="card-container1">
         {bottomCards.map((card, index) => (
           <div key={index} className="card1">
@@ -107,11 +205,15 @@ function HomeR() {
             <div className="card-content">
               <h5>{card.title}</h5>
               <p>{card.text}</p>
-              <a href="#" >Read More</a>
+              <a href="#"  onClick={() => openSearchModal(card.title, card.text, card.image)}>Read More</a>
             </div>
           </div>
         ))}
       </div>
+      <div className="chat">
+            <img className="chatbox" alt="Logo" src={chat} />
+            </div>
+
 
       <Footer />
     </div>
