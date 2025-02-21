@@ -179,7 +179,7 @@ margin-left: 0;
   padding: 5px 20px;
   position: fixed;
   left: -40px;
-  top: 50%; 
+  top: 40%; 
   transform: translateY(-50%) rotate(-90.27deg); 
 }
 .text-wrapper-4 {
@@ -259,6 +259,7 @@ padding: 2px;
 margin-top: 20px;
 width: 50%;
 min-width: 100px;
+
 }
 
 .search-icon {
@@ -273,6 +274,7 @@ color: #ffffff;
 padding: 30px;
 border-radius: 20px;
 height: 90vh;
+z-index: 1;
 }
 
 .related-btn {
@@ -496,10 +498,28 @@ color: #0056b3;
 .cards {
   grid-template-columns: repeat(2, 1fr); /* 2 cards per row on tablets */
 }
+.text-wrapper-4{
+  display: none;
+}
+.search-box{
+  padding-bottom: 30px;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
 }
 
 @media (max-width: 480px) {
 .cards {
   grid-template-columns: repeat(1, 1fr); /* 1 card per row on small screens */
+}
+.text-wrapper-4{
+  display: none;
+}
+.search-box{
+  padding-bottom: 30px;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
 }
 }

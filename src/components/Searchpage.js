@@ -4,18 +4,21 @@ import copilot from '../assets/logos/copilot.png'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import ChatUI from "./chat";
 
 function Searchpage(props) {
   const location = useLocation();
   const searchResults = location.state?.generatedText || "No results found.";
   const searchResults2 = location.state?.resData || "No results found.";
   const [searchResults3, setSearchResults3] = useState("");
-    const [searchResults1, setSearchResults1] = useState("");
+  const [searchResults1, setSearchResults1] = useState("");
   const maxLength = 300;
   const [expanded, setExpanded] = useState(false);
   const [expanded2, setExpanded2] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState('');    
+  const [results, setResults] = useState('');
+  const [isChatOpen, setIsChatOpen] = useState(false);
+      
   const navigate = useNavigate();
   const { ans } = props;  // Destructure quiz and ans from props
   const { resultData, generatedText } = ans || {}; 
@@ -77,7 +80,7 @@ const doSearch = async (ev) => {
         <div className="col-md-8 left-section">
           <h2 className="title">{props.quiz}</h2>
           <div className="icon-label">
-              <small>Recommended</small>
+              <small>Verified Results</small>
           </div>
           
                 {Array.isArray(resultData) && resultData.length > 0 ? (
@@ -92,7 +95,7 @@ const doSearch = async (ev) => {
           )}
           <hr style={{ marginRight: '20px' }} />
           <div className="icon-label">
-              <small>Verified</small>
+              <small>AI Master</small>
               </div>
             
              {searchResults === "No results found." ? (
@@ -126,11 +129,11 @@ const doSearch = async (ev) => {
                   <form onSubmit={doSearch}>
                     <input
                       type="text"
-                      placeholder="Search... "
+                      placeholder="Search "
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
-                      className="form-control"
-                      onKeyDown={(e) => e.key === "Enter" && doSearch(e)}
+                      className="search-input1"
+                     
                     />
                   </form>
                 </div>
@@ -142,23 +145,66 @@ const doSearch = async (ev) => {
         {/* Right Section */}
         <div className="col-md-4 right-section">
           <button className="related-btn">More related questions</button>
-          <ul className="question-list">
+          {/* <ul className="question-list">
             <li>What are the prevention and control of cholera?</li>
             <li>How can cholera spread?</li>
             <li>What is the best treatment for cholera?</li>
+          </ul> */}
+          <ul className="question-list">
+            {[
+              "What are the prevention and control of cholera?",
+              "How can cholera spread?",
+              "What is the best treatment for cholera?"
+            ].map((question, index) => (
+              <li key={index}>
+                <button
+                  className="question-btn"
+                  onClick={() => {
+                    setSearchTerm(question);
+                    doSearch({ preventDefault: () => {} });
+                  }}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "blue",
+                    cursor: "pointer",
+                    textAlign: "left",
+                    padding: "5px",
+                    fontSize: "14px",
+                  }}
+                >
+                  {question}
+                </button>
+              </li>
+            ))}
           </ul>
+
 
           <h6 className="see-list">See the full list</h6>
           <p>Recommended Topic</p>
           <div className="topics">
-            {['Technology', 'Money', 'Business', 'Productivity', 'Art', 'Mindfulness', 'Yada Yada'].map((topic) => (
+            {/* {['Technology', 'Money', 'Business', 'Productivity', 'Art', 'Mindfulness', 'Yada Yada'].map((topic) => (
               <button key={topic} className="topic-btn">{topic}</button>
+            ))} */}
+            {['Technology', 'Money', 'Business', 'Productivity', 'Art', 'Mindfulness', 'Yada Yada'].map((topic) => (
+              <button 
+                key={topic} 
+                className="topic-btn" 
+                onClick={() => {
+                  setSearchTerm(topic);
+                  doSearch({ preventDefault: () => {} }); // Trigger search
+                }}
+              >
+                {topic}
+              </button>
             ))}
           </div>
          
-          <div className="chat">
-            <img className="chatbox" alt="Logo" src={chat} />
-            </div>
+          <div className="chat" onClick={() => setIsChatOpen(!isChatOpen)}>
+            <img className="chatbox" alt="Chat Icon" src={chat} />
+          </div>
+          {isChatOpen && <ChatUI closeChat={() => setIsChatOpen(false)} />}
+
         </div>
       </div>
     </div>

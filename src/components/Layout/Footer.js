@@ -19,7 +19,7 @@ function Footer() {
         <div className="col-md-4 d-flex justify-content-center justify-content-md-end gap-3">
           <a href="#" className="text-decoration-none text-secondary">Privacy</a>
           <a href="#" className="text-decoration-none text-secondary">Terms</a>
-          <a href="#" className="text-decoration-none text-secondary">Settings</a>
+          {/* <a href="#" className="text-decoration-none text-secondary">Settings</a> */}
         </div>
       </div>
     </footer>

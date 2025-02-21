@@ -1,6 +1,6 @@
 
 body {
-    font-family: ageo;
+    font: ageo;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,8 +15,19 @@ body {
     background-color: transparent;
   }
   .category-heading{
-    text-align: left;
-    font-weight: bolder;
+    text-align: left; 
+    color: #031D5B;
+    font-family: Eau Sans Bold,sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0px;
+    width: 437px;
+    height: 65px;
+ 
+    margin-top: 8%;
+
+
   }
   
   /* Top Navigation */
@@ -29,6 +40,10 @@ body {
     top: 0;
     z-index: 1;
     padding: 0px 10vw 0px 10vw;
+
+    height: 64px;
+
+
     
   }
   .modal-overlay2 {
@@ -43,7 +58,7 @@ body {
   }
   
   .Logo {
-    height: 40px;
+    height: 60px;
   }
   .buttons1{
     background-color: #1E99D7;
@@ -55,18 +70,27 @@ body {
 
   }
   .title{
-    font-size: 120;
+    font-size: 48px;
     text-align: left;
-    font-weight:bolder;
-    color: #1E99D7  ;
-    padding: 40px 70px 10px 0px;
+    font-weight:900;
+    color: #3AB7E5;
+    padding: 30px 70px 20px 0px;
+    font: Ageo;
+    line-height: 57.6px;
+    letter-spacing: 0px;
+   
   }
   .content7{
-    font-size: 130%;
-    font-weight:100;
-    color:#031D5B ;
+    color: #031D5B;
     text-align: left;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Ageo;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: 0px;
+    width: 100%;
+    padding: 0%;
+
   }
   .logo1{
     
@@ -109,6 +133,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: stretch;
     margin: 0px 0;
     /* padding: 0 20px; */
   }
@@ -117,8 +142,9 @@ body {
   .card-left {
     flex: 1;    
     max-width: 100%;
-    margin-left: 10%;
+    margin-left: 11%;
     align-items: flex-start;
+    justify-content: flex-end
   }
   
   /* Right Image */
@@ -126,33 +152,49 @@ body {
     flex: 1;
     max-width: 100%;
     text-align: center;
+    
   }
   
   .card-right img {
     
-    height: 600px;
+    height: auto;
     border-radius: 8px;
-    margin-left: -20%;
-    width: 80%;
+    width: fit-content;
   }
   /* Search Bar */
-  .topsearch-bar1 form {
+  .topsearch-bar1 {
     width: 100%;
     padding: 10px;
+    top: 195px;
     
   }
   
   .search-input1 {
     width: 100%;
-    padding: 10px 24px;
-    font-size: 20px;
+    height: 60px;
+    padding: 16px 24px;
     border: 1.5px solid #55C0E7;
     border-radius: 5px;
     background: #FFFFFF;
-    color: #B6BBC9;
-    font-weight: 700;
-    margin-top: 0px;
+    font-family: Encode Sans,sans-serif;   
+    margin-top: 15%;
+    box-shadow: 0px 1px 5px 0px #00000027 inset;
+    background: url('../assets/Search.png') no-repeat 97%  center;
+    
   }
+  .search-input1::placeholder{
+    font-family: Encode Sans,sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    color: #B6BBC9;
+    width: 200px;
+  
+
+
+  }
+
   .search-input2 {
     width: 50%;
     padding: 10px 24px;
@@ -176,11 +218,13 @@ body {
   
   .card-container1 {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    align-items: stretch;
+    position: relative;
     flex-wrap: wrap;
-    background-color: transparent;
-    
+    gap: 10px;
+    max-width: 89%;
+    margin-left: auto;
+    top: -20px;
   }
   .card-container {
     display: flex;
@@ -191,7 +235,7 @@ body {
     
   }
   .card1 {
-    width: 27vw;
+    width: 26vw;
     overflow: hidden;
     border: none;
     height: fit-content;
@@ -207,7 +251,7 @@ body {
   
   .card1 img {
     width: 100%;
-    object-fit: cover;
+    object-fit: cover; 
     background-color: transparent;
   }
   
@@ -223,25 +267,38 @@ body {
   }
   
   .card1 h5 {
-    font-size: 20px;
-    color: #031D5B;
-    font-weight: 1000;
+    width: 303px;
+    height: 35px;
+
     background-color: transparent;
+    font-family: Encode Sans;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 35px;
+    letter-spacing: 0%;
+    color: #012B45;
+
+
   }
   
   .card1 p {
-    font-size: 14px;
-    color: #031D5B;
+    color: #868686;
     background-color: transparent;
-    word-spacing:normal;
-    line-height: 2;
     padding: 10px 0px 10px 0px;
+    font-family: DM Sans;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0%;
+
+
   }
   
   .card1 a {
     display: inline-block;
     text-decoration: none;
-    background-color: #1E99D7;
+    background: #3AB7E5;
+
     color: #fff;
     padding: 10px 15px;
     border-radius: 30px;
@@ -252,30 +309,49 @@ body {
   }
   .button-container1{
     align-items: flex-start;
-    margin-left: -70%;
-    display: inline-flex;
+    display: flex;
+    margin-top:2% ;
     gap: 15px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 
   }
   .auth-button1 {
     background-color: #1E99D7;
     border: none;
-    padding: 15px 15px  15px 15px;
     color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bolder;
+    width: 105px;
+    height: 64px;
+    top: 635px;
+    left: 207px;
+    gap: 8px;
+    padding-top: 16px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    border-radius: 16px;
       
 }
 .auth-button2{
   background-color: #031D5B;
     border: none;
-    padding: 15px 15px  15px 15px;
     color: #ffffff;
     border-radius: 10px;
     cursor: pointer;
     font-weight: bolder;
+    width: 105px;
+    height: 64px;
+    top: 635px;
+    left: 207px;
+    gap: 8px;
+    padding-top: 16px;
+    padding-right: 24px;
+    padding-bottom: 16px;
+    padding-left: 24px;
+    border-radius: 16px;
+
     
 }
 /* styles.css */
@@ -283,7 +359,7 @@ body {
   display: flex;
   gap: 10px;
   align-items: center;
-  padding: 35px 0px 30px 0px;
+  padding: 35px 0px 35px 0px;
   color: #031D5B;
   
   
@@ -310,6 +386,123 @@ body {
   height: 20px;
   border-radius: 6px;
 }
+.chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
+.chat-box {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  background: linear-gradient(to bottom, #29a9e1 50%, white 50%);
+  /* background-color: #29a9e1; */
+  color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chat-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.chat-message {
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.chat-card {
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+.chat-middle-card{
+  background-color: black;
+  border-radius: 18px;
+  height: 25vh;
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: gray;
+}
+
+.chat-btn {
+  width: 60%;
+  padding: 4px;
+  font-size: small;
+  margin-top: 8px;
+  background-color: #29a9e1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-btn1 {
+  width: 60%;
+  padding: 4px;
+  font-size: small;
+  margin-top: 8px;
+  background-color: #29a9e1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-btn:hover {
+  background-color: #29a9e1;
+}
+
+.chat-recent {
+  margin-top: 16px;
+}
+
+.chat-recent-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+}
+
 
   
   /* Responsive Design */
@@ -329,13 +522,35 @@ body {
     .card-right {
         display: none;
     }
+  
+    .button-container1{
+      align-items: center;
+      display: inline-flex;
+    }
 }
 
 @media (max-width: 768px) {
     .top-nav {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        flex-direction: row;
+        width: 100%;
+        padding: 10px;    
+    }
+    .title{
+      font-size: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0px;    
+    }
+    .button-container{
+      align-items: center;
+      display: flex;
+      gap: 10px    ;
+    
+    }
+    .auth-button{
+      font-size: medium;
     }
 
     .badge-container {
@@ -350,15 +565,82 @@ body {
     .buttons {
         justify-content: center;
     }
-}
+    .category-heading{
+      font-size: 36px;    
+      text-align: center;
+      margin-top: auto;
+      width: 100%;
+      
+    }
+    .button-container1{
+      align-items: center;
+      display: inline-flex;
+    }
+    .content7{
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: normal;
+    }
+  }
 
 @media (max-width: 480px) {
+  .top-nav {
+    flex-direction: row;
+    width: 100%;
+    padding: 10px;    
+    }
+    .button-container{
+      align-items: center;
+      display: flex;
+      gap: 10px;
+    }
+
     .card1 {
         width: 100%;
+        align-items: center;
     }
+    .button-container{
+      align-items: center;
+      display: flex;
+      gap: 10px    ;
+    
+    }
+    .auth-button{
+      font-size: medium;
+    }
+
 
     .card-container {
         flex-direction: column;
         align-items: center;
+    }
+    .category-heading{
+      font-size: 36px;    
+      text-align: center;
+      margin-top: auto;
+      width: 100%;
+      
+    }
+    .button-container1{
+      align-items: center;
+      display: inline-flex;
+    }
+    .content7{
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: normal;
+    }
+    .title{
+      font-size: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0px;    
+    }
+    .Logo{
+      height: 35px;
+      align-items: flex-start;
+    
     }
 }

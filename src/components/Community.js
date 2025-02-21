@@ -7,6 +7,7 @@ import '../styles/app.css';
 import microsoft from '../assets/microsoft2.png';
 import Footer from "./Layout/Footer";
 import Searchpage from "./Searchpage";
+import Header from "./Layout/navbar";
 
 export const Community = () => {
   const location = useLocation();
@@ -17,37 +18,13 @@ export const Community = () => {
 
   return (
     <>
+    <Header/>
       <div className="container-fluid chat-with-community">
         <div className="row">
           {/* Left section for large screens */}
           <div 
-            className="col-lg-2 d-none d-lg-flex flex-column align-items-start py-3" 
-            style={{ minWidth: '120px' }}
-          >
-            <img src={icon} alt="Logo" className="img-fluid mb-3" style={{ height: '80px' }} />
-            <div className="translate">
-              <button className="button-20">
-                <div className="text-wrapper-20">Swahili</div>
-              </button> 
-              <button className="button-21">
-                <div className="text-wrapper-20">Somali</div>
-              </button>
-            </div>
-          </div>
-
-          {/* Top section for small screens */}
-          <div className="col-12 d-flex d-lg-none justify-content-between align-items-center py-3">
-            <img src={icon} alt="Logo" className="img-fluid" style={{ height: '60px' }} />
-            <div className="translate">
-              <button className="button-20">
-                <div className="text-wrapper-20">Swahili</div>
-              </button> 
-              <button className="button-21">
-                <div className="text-wrapper-20">Somali</div>
-              </button>
-            </div>
-
-          </div>
+           className="col-lg-2  sm- hide d-none d-lg-flex flex-column align-items-start py-3" 
+            style={{ minWidth: '130px' }}></div>         
 
           {/* Content area */}
           <div className="col py-3">

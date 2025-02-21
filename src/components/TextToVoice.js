@@ -61,7 +61,7 @@ const TextToVoice = () => {
     return (
         <>
             <div onClick={openTalk}>
-                <img className="Logo texttovoiceimg" alt="Logo" src={ttv} height='45px' width='45px' />
+                <img className="Logo texttovoiceimg" alt="Logo" src={ttv}/>
             </div>
 
             <div

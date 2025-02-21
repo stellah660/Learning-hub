@@ -15,4 +15,8 @@ code {
   position: fixed;
   bottom: 180px;
   left: 13px;
+  height: 45px !important;
+  width: 45px !important;
+  z-index: 100001;
+
 }
